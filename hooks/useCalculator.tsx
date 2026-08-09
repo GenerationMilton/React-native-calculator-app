@@ -20,6 +20,8 @@ export const useCalculator = () => {
     setFormula(number);
   }, [number]);
 
+  const clean = () => {};
+
   const buildNumber = (numberString: string) => {
     // Verificar si ya existe el punto decimal
     if (number.includes(".") && numberString === ".") return;
