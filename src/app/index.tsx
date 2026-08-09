@@ -7,7 +7,8 @@ import { Colors } from "@/constants/Colors";
 import { useCalculator } from "../../hooks/useCalculator";
 
 const CalculatorApp = () => {
-  const { formula, buildNumber } = useCalculator();
+  const { formula, buildNumber, clean, toogleSign, deleteLast } =
+    useCalculator();
 
   return (
     <View style={globalStyles.calculatorContainer}>
@@ -25,19 +26,19 @@ const CalculatorApp = () => {
           label="C"
           blackText
           color={Colors.lightGray}
-          onPress={() => console.log("C")}
+          onPress={clean}
         />
         <CalculatorButton
           label="+/-"
           blackText
           color={Colors.lightGray}
-          onPress={() => console.log("+/-")}
+          onPress={toogleSign}
         />
         <CalculatorButton
           label="del"
           blackText
           color={Colors.lightGray}
-          onPress={() => console.log("del")}
+          onPress={deleteLast}
         />
         <CalculatorButton
           label="÷"
