@@ -33,6 +33,14 @@
           "imageWidth": 76
         }
       ],
+      [
+        "expo-navigation-bar",
+        {
+          "enforceContrast": true,
+          "hidden": true,
+          "style": "light"
+        }
+      ],
       "expo-font",
       "expo-status-bar"
     ],
