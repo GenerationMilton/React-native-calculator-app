@@ -16,8 +16,17 @@ export const useCalculator = () => {
   const lastOperation = useRef<Operator>();
 
   useEffect(() => {
+    if (lastOperation.current) {
+      const firstForumlaPart = formula.split(" ").at(0);
+      setFormula(`${firstForumlaPart} ${lastOperation.current} ${number}`);
+    } else {
+      setFormula(number);
+    }
+  }, [number]);
+
+  useEffect(() => {
     // Todo: Calculate subResult
-    setFormula(number);
+    //setPrevNumber(number);
   }, [number]);
 
   const clean = () => {
@@ -47,6 +56,36 @@ export const useCalculator = () => {
       return setNumber(currentSign + temporalNumber.slice(0, -1));
     }
     setNumber("0");
+  };
+
+  const setLastNumber = () => {
+    // TODO: Calculate result
+
+    if (number.endsWith(".")) {
+      setPrevNumber(number.slice(0, -1));
+    }
+    setPrevNumber(number);
+    setNumber("0");
+  };
+
+  const divideOperation = () => {
+    setLastNumber;
+    lastOperation.current = Operator.divide;
+  };
+
+  const multiplyOperation = () => {
+    setLastNumber;
+    lastOperation.current = Operator.multiply;
+  };
+
+  const subtractOperation = () => {
+    setLastNumber;
+    lastOperation.current = Operator.subtract;
+  };
+
+  const addOperation = () => {
+    setLastNumber;
+    lastOperation.current = Operator.add;
   };
 
   const buildNumber = (numberString: string) => {
@@ -88,5 +127,9 @@ export const useCalculator = () => {
     clean,
     toogleSign,
     deleteLast,
+    divideOperation,
+    multiplyOperation,
+    subtractOperation,
+    addOperation,
   };
 };
